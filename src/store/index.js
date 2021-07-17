@@ -3,11 +3,11 @@ import axios from 'axios';
 
 export default createStore({
   state: {
-    userList: [],
+    users: [],
   },
   mutations: {
     setUsers: (state, userList) => {
-      state.userList = userList;
+      state.users = userList;
     },
   },
   actions: {
