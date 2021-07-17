@@ -14,7 +14,9 @@ export default createStore({
     async getUsers({ commit }) {
       try {
         const resp = await axios.get('https://jsonplaceholder.typicode.com/users');
-        commit('setUsers', resp.data);
+        setTimeout(() => {
+          commit('setUsers', resp.data);
+        }, 2000);
       } catch (error) {
         console.log(error);
       }
