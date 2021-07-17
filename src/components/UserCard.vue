@@ -36,7 +36,12 @@
 <script>
 export default {
   name: 'UserCard',
-  props: ['users'],
+  props: {
+    users: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 
