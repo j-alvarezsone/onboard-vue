@@ -1,9 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import axios from "axios"
-import "./assets/css/tailwind.css"
+import { createApp } from 'vue';
+import DataddoTask from './DataddoTask.vue';
+import axios from 'axios';
+import './assets/css/tailwind.css';
 
-const app = createApp(App)
+const app = createApp(DataddoTask);
 app.provide('$axios', axios);
 
-app.mount('#app')
+app.mount('#app');
