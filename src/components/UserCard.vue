@@ -1,7 +1,7 @@
 <template>
   <div class="w-full justify-center sm:block custom_center">
     <div class="max-w-xs">
-      <div class="bg-white shadow-md hover:shadow-2xl rounded-lg py-3">
+      <div class="bg-white shadow-inner hover:shadow-2xl rounded-lg py-3">
         <!-- Avatar -->
         <div class="p-2">
           <svg class="w-24" viewBox="0 0 20 20">
