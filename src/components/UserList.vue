@@ -2,7 +2,11 @@
   <!-- Search -->
   <div class="p-4">
     <search-box v-model="search" />
-    <p class="text-black text-base font-semibold" v-if="filteredUserName.length === 0">
+    <p
+      class="text-black text-base font-semibold"
+      :style="[users.length ? { visibility: 'visible' } : { visibility: 'hidden' }]"
+      v-if="!filteredUserName.length"
+    >
       we could not find any user by name <span class="font-extrabold">"{{ search }}"</span>
     </p>
   </div>
