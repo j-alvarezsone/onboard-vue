@@ -1,22 +1,30 @@
 <template>
-  <!-- Search -->
-  <div class="p-4" v-if="users.length">
-    <div class="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-flow-col lg:grid-cols-4 my-6">
-      <search-box v-model="search" :selectedUsers="selectedUsers" :unselectedUsers="unselectedUsers" />
+  <div v-if="!loading">
+    <!-- Search -->
+    <div class="p-4">
+      <div class="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-flow-col lg:grid-cols-4 my-6">
+        <search-box v-model="search" :selectedUsers="selectedUsers" :unselectedUsers="unselectedUsers" />
+      </div>
+      <p
+        class="text-black text-base font-semibold"
+        :style="[users.length ? { visibility: 'visible' } : { visibility: 'hidden' }]"
+        v-if="!filteredUserName.length"
+      >
+        We could not find any user by name <span class="font-extrabold">"{{ search }}"</span>
+      </p>
     </div>
-    <p
-      class="text-black text-base font-semibold"
-      :style="[users.length ? { visibility: 'visible' } : { visibility: 'hidden' }]"
-      v-if="!filteredUserName.length"
-    >
-      We could not find any user by name <span class="font-extrabold">"{{ search }}"</span>
-    </p>
+
+    <!-- User card -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 mx-4 lg:mx-6">
+      <user-card
+        v-for="user in filteredUserName"
+        :key="user.id"
+        :users="user"
+        @click.prevent="selectedCounts(user.id)"
+      />
+    </div>
   </div>
 
-  <!-- User card -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 mx-4 lg:mx-6" v-if="users.length">
-    <user-card v-for="user in filteredUserName" :key="user.id" :users="user" @click.prevent="selectedCounts(user.id)" />
-  </div>
   <div class="flex justify-center items-center h-screen" v-else>
     <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
   </div>
@@ -36,12 +44,15 @@ export default {
     return {
       search: '',
       selectedUsers: 0,
-      unselectedUsers: 10,
+      unselectedUsers: 0,
     };
   },
   computed: {
     users() {
       return this.$store.state.users;
+    },
+    loading() {
+      return this.$store.state.loading;
     },
     filteredUserName() {
       return this.users.filter((user) => {
@@ -51,11 +62,11 @@ export default {
   },
   methods: {
     selectedCounts(uid) {
-      const selectedUsers = this.users.find((user) => user.id === uid);
+      const selectedUser = this.users.find((user) => user.id === uid);
 
-      selectedUsers.selected = !selectedUsers.selected;
+      selectedUser.selected = !selectedUser.selected;
 
-      if (selectedUsers.selected === true) {
+      if (selectedUser.selected === true) {
         this.selectedUsers++;
         this.unselectedUsers--;
       } else {
@@ -64,8 +75,10 @@ export default {
       }
     },
   },
-  mounted() {
-    this.$store.dispatch('getUsers');
+  async created() {
+    await this.$store.dispatch('getUsers');
+
+    this.unselectedUsers = this.$store.state.users.length;
   },
 };
 </script>
