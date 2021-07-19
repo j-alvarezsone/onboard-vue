@@ -1,6 +1,6 @@
 <template>
   <!-- Search -->
-  <div class="p-4">
+  <div class="p-4" v-if="users.length">
     <div class="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-flow-col lg:grid-cols-4 my-6">
       <search-box v-model="search" :selectedUsers="selectedUsers" :unselectedUsers="unselectedUsers" />
     </div>
