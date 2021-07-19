@@ -5,11 +5,7 @@
       <div class="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-flow-col lg:grid-cols-4 my-6">
         <search-box v-model="search" :selectedUsers="selectedUsers" :unselectedUsers="unselectedUsers" />
       </div>
-      <p
-        class="text-black text-base font-semibold"
-        :style="[users.length ? { visibility: 'visible' } : { visibility: 'hidden' }]"
-        v-if="!filteredUserName.length"
-      >
+      <p class="text-black text-base font-semibold" v-if="!filteredUserName.length">
         We could not find any user by name <span class="font-extrabold">"{{ search }}"</span>
       </p>
     </div>
@@ -24,7 +20,7 @@
       />
     </div>
   </div>
-
+  <!-- loading spinner -->
   <div class="flex justify-center items-center h-screen" v-else>
     <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
   </div>
