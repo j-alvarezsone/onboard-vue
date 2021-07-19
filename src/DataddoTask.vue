@@ -1,6 +1,5 @@
 <template>
   <main>
-    <!-- Your code goes here -->
     <user-list />
   </main>
 </template>
