@@ -1,7 +1,7 @@
 <template>
   <!-- Search -->
   <div class="p-4">
-    <div class="grid lg:grid-flow-col lg:grid-cols-2 my-6">
+    <div class="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-flow-col lg:grid-cols-4 my-6">
       <search-box v-model="search" :selectedUsers="selectedUsers" :unselectedUsers="unselectedUsers" />
     </div>
     <p
@@ -14,7 +14,7 @@
   </div>
 
   <!-- User card -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 mx-6 lg:mx-4" v-if="users.length">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 mx-4 lg:mx-6" v-if="users.length">
     <user-card v-for="user in filteredUserName" :key="user.id" :users="user" @click.prevent="selectedCounts(user.id)" />
   </div>
   <div class="flex justify-center items-center h-screen" v-else>
