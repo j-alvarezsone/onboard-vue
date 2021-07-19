@@ -54,7 +54,6 @@ export default {
       const selectedUsers = this.users.find((user) => user.id === uid);
 
       selectedUsers.selected = !selectedUsers.selected;
-      console.log(selectedUsers);
 
       if (selectedUsers.selected === true) {
         this.selectedUsers++;
