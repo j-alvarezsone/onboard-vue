@@ -11,13 +11,13 @@
   </div>
 
   <!-- Selected -->
-  <div class="flex sm:mt-5 lg:mt-0 min-w-full md:col-span-1 lg:col-span-1 lg:px-1 mb-4 sm:mb-0 md:mb-0">
+  <div class="flex sm:mt-5 lg:mt-0 min-w-full md:col-span-1 lg:col-span-1 lg:px-2 mb-4 sm:mb-0 md:mb-0">
     <span class="w-full sm:w-11/12 lg:w-full bg-blue-700 p-2 rounded-md text-center text-white"
       >Selected Users: {{ selectedUsers }}</span
     >
   </div>
 
-  <div class="flex justify-end lg:pr-2 sm:mt-5 lg:mt-0 min-w-full md:col-span-1 lg:col-span-1 lg:px-1">
+  <div class="flex justify-end lg:pr-2 sm:mt-5 lg:mt-0 min-w-full md:col-span-1 lg:col-span-1 lg:px-2">
     <span class="w-full sm:w-11/12 lg:w-full bg-blue-700 p-2 rounded-md text-center text-white"
       >Unselected Users: {{ unselectedUsers }}</span
     >
